@@ -31,6 +31,13 @@ mkdir -p ~/.aiconsole/bin_public
 # link the aiconsole binary to the bin_public directory
 ln -sf ~/.aiconsole/bin/aiconsole ~/.aiconsole/bin_public/aiconsole
 
+# TODO update logic with handling different shells
+# currently, it will skip for linux versions, for windows there should be a different script used
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # for macos the current default shell is zsh
+  touch ~/.zshrc
+fi
+
 # add the bin_public directory to the PATH depends on the shell
 if [ -f ~/.bashrc ]; then
     echo "export PATH=\$PATH:~/.aiconsole/bin_public" >> ~/.bashrc
